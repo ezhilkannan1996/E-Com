@@ -1,0 +1,20 @@
+<!-- navigation.component.html -->
+<mat-toolbar class="main-nav">
+  <div class="logo">
+    <a routerLink="/">ShopEase</a>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/products">Products</a></li>
+    <li><a routerLink="/about-us">About Us</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+  </ul>
+  <div class="search-cart">
+    <!-- <mat-form-field class="search-input" *ngIf="isProductsMenuSelected()">
+      <input matInput type="text" placeholder="Search">
+    </mat-form-field> -->
+    <a routerLink="/view-cart" class="cart-icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>

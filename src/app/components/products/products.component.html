@@ -1,0 +1,36 @@
+<!-- <mat-form-field class="search-input">
+  <input matInput type="text" placeholder="Search">
+</mat-form-field> -->
+<!-- <app-product-sidebar (categorySelected)="filterProductsByCategory($event)"></app-product-sidebar> -->
+<section class="products-container">
+  <mat-card class="product-card" *ngFor="let product of getPaginatedProducts()">
+    <div class="product-image">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" />
+    </div>
+    <mat-card-content class="product-details">
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+      <span class="product-price">$ {{ product.price }}</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="product-buttons">
+        <button mat-raised-button color="primary" (click)="addToCart(product)" class="add-to-cart-btn">
+          <mat-icon>add_shopping_cart</mat-icon>
+          <ng-container *ngIf="!isProductInCart(product.id)">Add to Cart</ng-container>
+          <ng-container *ngIf="isProductInCart(product.id)">Added to Cart</ng-container>
+        </button>
+        <a mat-button [routerLink]="['/product', product.id]" class="view-product-link">
+          <mat-icon>visibility</mat-icon> View
+        </a>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</section>
+
+<mat-paginator
+  [length]="totalItems"
+  [pageSize]="itemsPerPage"
+  [pageIndex]="currentPage - 1"
+  [pageSizeOptions]="[5, 10, 20, 50]"
+  (page)="onPageChange($event)">
+</mat-paginator>
